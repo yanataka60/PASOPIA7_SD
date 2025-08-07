@@ -300,15 +300,15 @@ bugfire2009さんのDumpListEditorを使ってバイナリ形式に変換した�
 　BASICに復帰します。
 
 ### BASICプログラム中から機械語プログラムをLOADする
-　BASICプログラム中に「CALL &HF803:REM ファイル名」と記述することで機械語プログラムをLOAD出来ます。
+　BASICプログラム中に「CALL &HE803:REM ファイル名」と記述することで機械語プログラムをLOAD出来ます。
 
 　ファイル名はSDカードに保存されているファイル名です。拡張子はつけてもつけなくても構いません。
 
-　LOAD出来るのはF7FFhまでです。(clear文を修正すれば最大FA3Fhまで可能です)
+　通常LOAD可能なのはCLEAR文で設定したメインメモリの上限E800hですが、F000hに変更すればEDC8hまでのBASICプログラムを一度だけLOAD出来ます。
 
 ##### 例)
 
-30 CALL &HF803:REM TRAFFIC CONTROL.bin
+20 B=&HE803:CALL B:REM antiair.bin
 
 
 ## 操作上の注意
