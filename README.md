@@ -1,6 +1,6 @@
 # TOSHIBA PASOPIA7にSD-Cardとのロード、セーブ機能
 
-![PASOPIA7_SD](https://github.com/yanataka60/FP-1100_SD/blob/main/JPEG/TITLE.jpg)
+![PASOPIA7_SD](https://github.com/yanataka60/PASOPIA7_SD/blob/main/JPEG/TITLE.jpg)
 
 　TOSHIBA PASOPIA7でCMTの代わりにSD-CARDからロード、セーブを実現するものです。
 
@@ -283,6 +283,18 @@ bugfire2009さんのDumpListEditorを使ってバイナリ形式に変換した�
 
 #### B[RETURN]又はQ[RETURN]
 　BASICに復帰します。
+
+### BASICプログラム中から機械語プログラムをLOADする
+　BASICプログラム中に「CALL &HF803:REM ファイル名」と記述することで機械語プログラムをLOAD出来ます。
+
+　ファイル名はSDカードに保存されているファイル名です。拡張子はつけてもつけなくても構いません。
+
+　LOAD出来るのはF7FFhまでです。(clear文を修正すれば最大FA3Fhまで可能です)
+
+##### 例)
+
+30 CALL &HF803:REM TRAFFIC CONTROL.bin
+
 
 ## 操作上の注意
 　電源を入れたままSD-CARDの抜き差しをする場合又は「SD-CARD INITIALIZE ERROR」と表示されたときは、SD-CARDを挿入後、SD、LM、LBコマンド等でSD-CARDに3回ほどアクセスすれば復旧します。
