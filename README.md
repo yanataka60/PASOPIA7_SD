@@ -33,7 +33,7 @@
 ## 部品
 |番号|品名|数量|備考|
 | ------------ | ------------ | ------------ | ------------ |
-|J1|2x25Pinコネクタ|1|協立エレショップ JS-1200R-50、秋月電子通商 PH-2x40SGなど|
+|J1|2x25ボックスヘッダ|1|共立エレショップ JS-1200R-50など、秋月電子通商 PH-2x40RGなどのピンヘッダでも代用可(注4)|
 ||J2,J3のいずれか|||
 |J2|Micro_SD_Card_Kit|1|秋月電子通商 AE-microSD-LLCNV (注1)|
 |J3|MicroSD Card Adapter|1|Arduino等に使われる5V電源に対応したもの(注2)|
@@ -67,7 +67,9 @@ MicroSD Card Adapterについているピンヘッダを除去してハンダ付
 
 ![MicroSD Card Adapter1](https://github.com/yanataka60/PASOPIA7_SD/blob/main/JPEG/MicroSD%20Card%20Adapter.jpg)
 
-#### 注3)Arduino Pro MiniはA4、A5ピンも使っています。
+### 注3)Arduino Pro MiniはA4、A5ピンも使っています。
+
+### 注4)ピンヘッダで代用するときは、基板から若干浮かせてピンヘッダをハンダ付けするとフラットケーブルをスムーズに抜き差しできます。
 
 
 ### PASOPIA7_SD_ROM基板
