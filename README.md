@@ -229,7 +229,7 @@ bugfire2009さんのDumpListEditorを使ってバイナリ形式に変換した�
 
 　2)～EC56h:機械語プログラムをLOAD後は、J,Q,Bのみ使えます。SD,LMコマンドでLOADした後、Jコマンドでの実行は可能です。
 
-　3)～EDC8h:BASICプログラムLOADの限界です。通常はCLEAR文で設定したメインメモリの上限E800hですが、F000hに変更すればEDC8hまでのBASICプログラムを一度だけLOAD出来ます。
+　3)～EDC8h:BASICプログラムLOADの限界です。通常はCLEAR文で設定したメインメモリの上限E800hですが、F000hに変更すればEDC8hまでのBASICプログラムをLOAD出来ます。
 
 　4)～EE63h:BASIC中からはこれ以降への機械語LOADは出来ません。
 
@@ -304,7 +304,7 @@ bugfire2009さんのDumpListEditorを使ってバイナリ形式に変換した�
 
 　ファイル名はSDカードに保存されているファイル名です。拡張子はつけてもつけなくても構いません。
 
-　通常LOAD可能なのはCLEAR文で設定したメインメモリの上限E800hですが、F000hに変更すればEDC8hまでのBASICプログラムを一度だけLOAD出来ます。
+　通常LOAD可能なのはCLEAR文で設定したメインメモリの上限E800hですが、F000hに変更すればEE63hまでのBASICプログラムをLOAD出来ます。
 
 ##### 例)
 
