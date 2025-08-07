@@ -93,9 +93,11 @@ MicroSD Card Adapterについているピンヘッダを除去してハンダ付
 
 　また、PASOPIA7_SD_ROM基板への+5V供給のため、PASOPIA7_SD_ROM基板の+5V端子(J2)とPASOPIA7_SD本体基板の+5V端子(J4)を繋いでください。
 
-![Spacer1](https://github.com/yanataka60/FP-1100_SD/blob/main/JPEG/spacer_1.JPG)
+![Spacer1](https://github.com/yanataka60/PASOPIA7_SD/blob/main/JPEG/CONNECT(1).JPG)
 
-![Spacer2](https://github.com/yanataka60/FP-1100_SD/blob/main/JPEG/spacer_2.JPG)
+![Spacer2](https://github.com/yanataka60/PASOPIA7_SD/blob/main/JPEG/CONNECT(2).JPG)
+
+![Spacer2](https://github.com/yanataka60/PASOPIA7_SD/blob/main/JPEG/PAC%20SLOT%201.JPG)
 
 ## ROMへの書込み
 　Z80フォルダ内のRAMPAC.binをROMライター(TL866II Plus等)を使って27256又は27512に書き込みます。
