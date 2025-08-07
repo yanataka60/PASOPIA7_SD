@@ -26,9 +26,9 @@
 ### PASOPIA7_SD本体基板
 　KiCadフォルダ内のPASOPIA7_SD.PDFを参照してください。
 
-[回路図](https://github.com/yanataka60/FP-1100_SD/blob/main/Kicad/FP-1100_SD.PDF)
+[回路図](https://github.com/yanataka60/PASOPIA7_SD/blob/main/Kicad/1.6/PASOPIA7_SD.pdf)
 
-![PASOPIA7_SD](https://github.com/yanataka60/FP-1100_SD/blob/main/Kicad/FP-1100_SD_1.jpg)
+![PASOPIA7_SD](https://github.com/yanataka60/PASOPIA7_SD/blob/main/Kicad/1.6/PASOPIA7_SD_1.jpg)
 
 ## 部品
 |番号|品名|数量|備考|
@@ -59,7 +59,7 @@ MicroSD Card Adapterについているピンヘッダを除去してハンダ付
 
 ハンダ付けに自信のない方はJ1の秋月電子通商　AE-microSD-LLCNVをお使いください。AE-microSD-LLCNVならパワーLED、アクセスLEDが付いています。
 
-![MicroSD Card Adapter1](https://github.com/yanataka60/FP-1100_SD/blob/main/JPEG/MicroSD%20Card%20Adapter.jpg)
+![MicroSD Card Adapter1](https://github.com/yanataka60/PASOPIA7_SD/blob/main/JPEG/MicroSD%20Card%20Adapter.jpg)
 
 #### 注3)Arduino Pro MiniはA4、A5ピンも使っています。
 
@@ -67,9 +67,9 @@ MicroSD Card Adapterについているピンヘッダを除去してハンダ付
 ### PASOPIA7_SD_ROM基板
 　KiCadフォルダ内のPASOPIA7_SD.PDFを参照してください。
 
-[回路図](https://github.com/yanataka60/FP-1100_SD/blob/main/Kicad/FP-1100_SD.PDF)
+[回路図](https://github.com/yanataka60/PASOPIA7_SD/blob/main/Kicad/ROM/PASOPIA7_SD_ROM.pdf)
 
-![PASOPIA7_SD](https://github.com/yanataka60/FP-1100_SD/blob/main/Kicad/FP-1100_SD_1.jpg)
+![PASOPIA7_SD](https://github.com/yanataka60/PASOPIA7_SD/blob/main/Kicad/ROM/PASOPIA7_SD_ROM_1.jpg)
 |番号|品名|数量|備考|
 | ------------ | ------------ | ------------ | ------------ |
 ||J3,J4のいずれか|||
