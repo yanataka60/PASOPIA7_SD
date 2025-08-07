@@ -33,6 +33,7 @@
 ## 部品
 |番号|品名|数量|備考|
 | ------------ | ------------ | ------------ | ------------ |
+|J1|2x25Pinコネクタ|1|秋月電子通商 PH-2x40SGなど|
 ||J2,J3のいずれか|||
 |J2|Micro_SD_Card_Kit|1|秋月電子通商 AE-microSD-LLCNV (注1)|
 |J3|MicroSD Card Adapter|1|Arduino等に使われる5V電源に対応したもの(注2)|
@@ -43,11 +44,16 @@
 |C1-C3|積層セラミックコンデンサ 0.1uF|3||
 |C4|電解コンデンサ 16v100uF|1||
 |S1|3Pスライドスイッチ|1|秋月電子通商 SS12D01G4など|
-|J1|2x25Pinコネクタ|1|秋月電子通商 PH-2x40SGなど|
-|J4|2x25Pinコネクタ|1|秋月電子通商 PH-2x40SGなど|
-|J5|2x25Pinコネクタ|1|秋月電子通商 PH-2x40SGなど|
-|J6|2x25Pinコネクタ|1|秋月電子通商 PH-2x40SGなど|
+|J4|コネクタ 2Pin|1|ピンヘッダで代用するときはGNDと間違えないよう1Pinで5Vだけにしたほうが良い|
+|J5|DCジャック|1|秋月電子通商 MJ-179PHなど|
+|J6|2P ピンヘッダ|1|秋月電子通商 PH-1x40SGなど|
 ||2.54mmピッチ2x25Pinフラットケーブル|1||
+||PASOPIA7_SDとPASOPIA7_SD_ROMを繋ぐケーブル|1|秋月電子通商 0116-71905-01-015など|
+
+PASOPIA7_SDに外部から電源を供給する場合
+|番号|品名|数量|備考|
+| ------------ | ------------ | ------------ | ------------ |
+||ACアダプター 5V|1|秋月電子通商 M050200-A010JPなど|
 
 ### 注1)秋月電子通商　AE-microSD-LLCNVのJ1ジャンパはショートしてください。
 
@@ -72,30 +78,31 @@ MicroSD Card Adapterについているピンヘッダを除去してハンダ付
 ![PASOPIA7_SD](https://github.com/yanataka60/PASOPIA7_SD/blob/main/Kicad/ROM/PASOPIA7_SD_ROM_1.jpg)
 |番号|品名|数量|備考|
 | ------------ | ------------ | ------------ | ------------ |
-||J3,J4のいずれか|||
-|J3|Micro_SD_Card_Kit|1|秋月電子通商 AE-microSD-LLCNV (注1)|
-|J4|MicroSD Card Adapter|1|Arduino等に使われる5V電源に対応したもの(注2)|
-|U1-U3|74LS04|3||
-|U4-U5|74LS02|2||
-|U6-U8|74LS30|3||
-|U10|8255|1||
-|U11|Arduino_Pro_Mini_5V|1|Atmega328版を使用 168版は不可。(注3)|
-|U12|74LS32|1||
-|U13|74LS244|1||
-|U14|ROM 27256/29C256又は27512/27C512相当品|1|入手しやすいものでOK、28C256は不可|
-|C1-C10,C12,C13|積層セラミックコンデンサ 0.1uF|12||
-|C11|電解コンデンサ 16v100uF|1||
+|U1|74LS04|1||
+|U2|74LS00|1||
+|U3|74LS20|1||
+|U4-U5|74LS273|2||
+|U6|ROM 27256/29C256又は27512/27C512相当品|1|入手しやすいものでOK、28C256は不可|
+|U7|74LS245|1||
+|C1-C7|積層セラミックコンデンサ 0.1uF|7||
+|C8|電解コンデンサ 16v100uF|1||
 |S1|3Pin ピンヘッダーとジャンパーピン又は3Pスライドスイッチ|1|秋月電子通商 SS12D01G4など|
-
+|J2|コネクタ 2Pin|1|ピンヘッダで代用するときはGNDと間違えないよう1Pinで5Vだけにしたほうが良い|
 
 ## 取り付け
-　PASOPIA7_SD本体基板はPASOPIA7本体後部の拡張端子とフラットケーブルで接続し、PASOPIA7_SD_ROM基板はPACスロット2に挿入します。この時部品実装面を手前にして挿入してください。
+　PASOPIA7_SD本体基板はPASOPIA7本体後部の拡張端子とフラットケーブルで接続します。50Pinフラットケーブルは、コネクタのボッチとケーブルの返しが両方上になる側のコネクタを本体に嵌めます。
+
+　ケーブルの返しを下にして本体に嵌めると一見嵌っているように見えても接触不良を起こしていることがあります。
+
+![Connect1](https://github.com/yanataka60/PASOPIA7_SD/blob/main/JPEG/CONNECT(1).JPG)
+
+　PASOPIA7_SD_ROM基板はPACスロット2に挿入します。この時PASOPIA7_SD_ROM基板は部品実装面を手前にして挿入してください。
 
 　また、PASOPIA7_SD_ROM基板への+5V供給のため、PASOPIA7_SD_ROM基板の+5V端子(J2)とPASOPIA7_SD本体基板の+5V端子(J4)を繋いでください。
 
-![Spacer1](https://github.com/yanataka60/PASOPIA7_SD/blob/main/JPEG/CONNECT(1).JPG)
+![Connect2](https://github.com/yanataka60/PASOPIA7_SD/blob/main/JPEG/CONNECT(2).JPG)
 
-![Spacer2](https://github.com/yanataka60/PASOPIA7_SD/blob/main/JPEG/CONNECT(2).JPG)
+　XPAC2又はRAMPACを使用するときは、外部電源として5V電源アダプタを接続するか、内部電源としてPAC SLOT1の43Pin又は44Pinから+5Vを取り出して接続します。
 
 ![Spacer2](https://github.com/yanataka60/PASOPIA7_SD/blob/main/JPEG/PAC%20SLOT%201.JPG)
 
