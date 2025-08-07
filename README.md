@@ -67,7 +67,7 @@ MicroSD Card Adapterについているピンヘッダを除去してハンダ付
 
 ![MicroSD Card Adapter1](https://github.com/yanataka60/PASOPIA7_SD/blob/main/JPEG/MicroSD%20Card%20Adapter.jpg)
 
-#### 注3)Arduino Pro MiniはA4、A5ピンも使っています。
+### 注3)Arduino Pro MiniはA4、A5ピンも使っています。
 
 #### 注4)ピンヘッダで代用するときは、基板から若干浮かせてピンヘッダをハンダ付けするとフラットケーブルをスムーズに抜き差しできます。
 
