@@ -33,7 +33,7 @@
 ## 部品
 |番号|品名|数量|備考|
 | ------------ | ------------ | ------------ | ------------ |
-|J1|2x25Pinコネクタ|1|秋月電子通商 PH-2x40SGなど|
+|J1|2x25Pinコネクタ|1|協立エレショップ JS-1200R-50、秋月電子通商 PH-2x40SGなど|
 ||J2,J3のいずれか|||
 |J2|Micro_SD_Card_Kit|1|秋月電子通商 AE-microSD-LLCNV (注1)|
 |J3|MicroSD Card Adapter|1|Arduino等に使われる5V電源に対応したもの(注2)|
@@ -48,7 +48,7 @@
 |J5|DCジャック|1|秋月電子通商 MJ-179PHなど|
 |J6|2P ピンヘッダ|1|秋月電子通商 PH-1x40SGなど|
 ||2.54mmピッチ2x25Pinフラットケーブル|1||
-||PASOPIA7_SDとPASOPIA7_SD_ROMを繋ぐケーブル|1|秋月電子通商 0116-71905-01-015など|
+||PASOPIA7_SDとPASOPIA7_SD_ROMを繋ぐケーブル|15cm～30cm|ジャンプワイヤー メス-メスなど|
 
 PASOPIA7_SDに外部から電源を供給する場合
 |番号|品名|数量|備考|
@@ -102,9 +102,9 @@ MicroSD Card Adapterについているピンヘッダを除去してハンダ付
 
 ![Connect2](https://github.com/yanataka60/PASOPIA7_SD/blob/main/JPEG/CONNECT(2).JPG)
 
-　XPAC2又はRAMPACを使用するときは、外部電源として5V電源アダプタを接続するか、内部電源としてPAC SLOT1の43Pin又は44Pinから+5Vを取り出して接続します。
+　XPAC2又はRAMPACを使用するときは、外部電源として5V電源アダプタを接続するか、内部電源としてPAC SLOT1の43Pin又は44Pinから+5Vを取り出してジャンプワイヤー オス-メスなどで接続します。
 
-![Spacer2](https://github.com/yanataka60/PASOPIA7_SD/blob/main/JPEG/PAC%20SLOT%201.JPG)
+![Connect3](https://github.com/yanataka60/PASOPIA7_SD/blob/main/JPEG/PAC%20SLOT%201.JPG)
 
 ## ROMへの書込み
 　Z80フォルダ内のRAMPAC.binをROMライター(TL866II Plus等)を使って27256又は27512に書き込みます。
