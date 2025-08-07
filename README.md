@@ -55,9 +55,9 @@ PASOPIA7_SDに外部から電源を供給する場合
 | ------------ | ------------ | ------------ | ------------ |
 ||ACアダプター 5V|1|秋月電子通商 M050200-A010JPなど|
 
-### 注1)秋月電子通商　AE-microSD-LLCNVのJ1ジャンパはショートしてください。
+#### 注1)秋月電子通商　AE-microSD-LLCNVのJ1ジャンパはショートしてください。
 
-### 注2)MicroSD Card Adapterを使う場合
+#### 注2)MicroSD Card Adapterを使う場合
 
 J3に取り付けます。
 
@@ -67,9 +67,9 @@ MicroSD Card Adapterについているピンヘッダを除去してハンダ付
 
 ![MicroSD Card Adapter1](https://github.com/yanataka60/PASOPIA7_SD/blob/main/JPEG/MicroSD%20Card%20Adapter.jpg)
 
-### 注3)Arduino Pro MiniはA4、A5ピンも使っています。
+#### 注3)Arduino Pro MiniはA4、A5ピンも使っています。
 
-### 注4)ピンヘッダで代用するときは、基板から若干浮かせてピンヘッダをハンダ付けするとフラットケーブルをスムーズに抜き差しできます。
+#### 注4)ピンヘッダで代用するときは、基板から若干浮かせてピンヘッダをハンダ付けするとフラットケーブルをスムーズに抜き差しできます。
 
 
 ### PASOPIA7_SD_ROM基板
