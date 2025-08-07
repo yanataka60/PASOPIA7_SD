@@ -160,13 +160,17 @@ MicroSD Card Adapterについているピンヘッダを除去してハンダ付
 #### 扱えるファイル
 bugfire2009さんのDumpListEditorを使ってバイナリ形式に変換したものを使います。
 
+扱う機種をPASOPIA7に変更したうえで変換します。
+
+![DumpListEditor0](https://github.com/yanataka60/PASOPIA7_SD/blob/main/JPEG/DumpListEditor0.jpg)
+
 ##### 機械語 -> 「BINファイル書出し(各モデル固有ヘッダ付き)」で保存、拡張子は.bin
 
-![DumpListEditor1](https://github.com/yanataka60/FP-1100_SD/blob/main/JPEG/DumpListEditor2.jpg)
+![DumpListEditor1](https://github.com/yanataka60/PASOPIA7_SD/blob/main/JPEG/DumpListEditor2.jpg)
 
 ##### BASIC -> 「BASファイル書出し」で保存、拡張子は.bas
 
-![DumpListEditor2](https://github.com/yanataka60/FP-1100_SD/blob/main/JPEG/DumpListEditor1.jpg)
+![DumpListEditor2](https://github.com/yanataka60/PASOPIA7_SD/blob/main/JPEG/DumpListEditor1.jpg)
 
 ### コマンド
 　コマンド入力時にBSキー又は左カーソルキーで直前に入力した文字を訂正できます。
