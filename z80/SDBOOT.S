@@ -54,6 +54,9 @@ BCALL	MACRO	a1
 
 		ORG		0E800H
 
+;		ORG		0E800H-2		;デバッグ用
+;		DW		PEND-START0		;デバッグ用
+
 START0:	JP		START
 START1:	JP		BCAL
 START2:	JP		INIT
@@ -347,10 +350,10 @@ ERR99:	LD		DE,LBUF
 		CALL	HEX1
 		LD		HL,LBUF
 		LD		B,(HL)
-		BCALL	47	
+		BCALL	47				;1文字出力		B<-ASCII
 		INC		HL
 		LD		B,(HL)
-		BCALL	47	
+		BCALL	47				;1文字出力		B<-ASCII
 		LD		HL,MSG_FF		;その他ERROR
 ERRMSG:	CALL	LINEPR
 		CALL	CRLF
@@ -510,14 +513,14 @@ LI2:	BCALL	1				;1文字入力
 		JR		NZ,LI4
 LI3:	DEC		DE
 		LD		B,' '			;カーソル位置の文字を空白に置き換え
-		BCALL	47	
+		BCALL	47				;1文字出力		B<-ASCII
 		LD		B,1DH			;もう一回カーソル左
-		BCALL	47	
+		BCALL	47				;1文字出力		B<-ASCII
 		JR		LI2
 LI4:	CP		08H				;BS処理
 		JR		NZ,LI5
 		LD		B,1DH			;カーソル左
-		BCALL	47	
+		BCALL	47				;1文字出力		B<-ASCII
 		JR		LI3				;カーソル左と同様に処理
 LI5:	CP		20H				;コントロール文字ならLBUFに書き込まない
 		JR		C,LI2
@@ -685,7 +688,7 @@ BL2:
 		POP		HL
 		LD		HL,(BASICST)
 		PUSH	HL
-		JP		1692H			;LBコマンドでLOADされたBASICプログラムの次行アドレス情報を更新?し、BASICに戻る
+		JP		RENUM			;LBコマンドでLOADされたBASICプログラムの次行アドレス情報を更新?し、BASICに戻る
 
 BLERR:
 		LD		A,0E0H			;AREA OVERエラーを表示
@@ -703,7 +706,7 @@ LINEPR:	PUSH	HL
 		LD		D,00H
 		LD		E,(HL)
 		INC		HL
-		BCALL	48
+		BCALL	48				;文字列表示		HL=文字列 DE=長さ
 		POP		DE
 		POP		HL
 		RET
@@ -774,7 +777,7 @@ ML4:
 		LD		D,A
 
 		LD		B,'('
-		BCALL	47	
+		BCALL	47				;1文字出力		B<-ASCII
 		CALL	RCVBYTE			;書き込み先頭アドレス受信
 		LD		L,A
 		CALL	RCVBYTE
@@ -782,7 +785,7 @@ ML4:
 		LD		(EXEADR),HL
 		CALL	HLPRT
 		LD		B,'-'
-		BCALL	47	
+		BCALL	47				;1文字出力		B<-ASCII
 
 		PUSH	HL
 		ADD		HL,DE
@@ -790,28 +793,22 @@ ML4:
 		CALL	HLPRT
 		POP		HL
 		LD		B,')'
-		BCALL	47	
-		CALL	M2RET			;メモリモード(RAM ON)
+		BCALL	47				;1文字出力		B<-ASCII
 
 		LD		B,'.'
-;******************* ここから以降を上書きしなければLGコマンドでロード実行可能(EEEC)
+;******************* ここから以降を上書きしなければLGコマンドでロード実行可能(EEE9)
 DBRLOP:	CALL	RCVBYTE			;データ受信
 		LD		(HL),A
 		DEC		DE
 		LD		A,E
 		AND		A
 		JR		NZ,DR1
-
-		CALL	M0RET			;メモリモード(BASIC ROM ON)
-		BCALL	47	
-		CALL	M2RET			;メモリモード(RAM ON)
+		BCALL	47				;1文字出力		B<-ASCII
 
 DR1:	LD		A,D
 		OR		E
 		INC		HL
 		JR		NZ,DBRLOP   	;DE=0までLOOP
-
-		CALL	M0RET			;メモリモード(BASIC ROM ON)
 		CALL	CRLF
 		XOR		A
 		RET
@@ -837,13 +834,9 @@ ME1:	POP		HL
 		CALL	M2RET			;メモリモード(RAM ON)
 		JP		(HL)
 
-;*************** BASIC ROM ON **************************
-M0RET:	XOR 	A				;BASIC ROM ON
-		JR		M00
-
 ;*************** RAM ON ******************************
 M2RET:	LD		A,02H			;RAM ON
-M00:	OUT		(3CH),A
+		OUT		(3CH),A
 		RET
 
 ;************* 改行 **************************
@@ -911,7 +904,7 @@ EXEADR:		DS		2
 PRTDOT:	AND		A
 		JR		NZ,PD1
 		LD		B,'.'
-		BCALL	47	
+		BCALL	47				;1文字出力		B<-ASCII
 PD1:	RET
 
 ;**** 1BYTE受信 ****
@@ -969,4 +962,5 @@ F2CHK:	IN		A,(PPI_C)
 		JR		NZ,F2CHK
 		RET
 
+PEND:
 		END
