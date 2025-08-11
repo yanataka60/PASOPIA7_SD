@@ -584,10 +584,6 @@ void loop()
   } else {
 //状態コード送信(ERROR)
     snd1byte(0xF0);
-// コマンド11hの場合だけextchkの値待ちになるので仮の値0xFFを送信
-    if (cmd == 0x11){
-      snd1byte(0xFF);
-    }
     sdinit();
   }
 }
