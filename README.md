@@ -1,8 +1,8 @@
-# TOSHIBA PASOPIA、PASOPIA7にSD-Cardとのロード、セーブ機能
+# TOSHIBA PASOPIA7、PASOPIAにSD-Cardとのロード、セーブ機能
 
 ![PASOPIA7_SD](https://github.com/yanataka60/PASOPIA7_SD/blob/main/JPEG/TITLE.jpg)
 
-　TOSHIBA PASOPIA、PASOPIA7でCMTの代わりにSD-CARDからロード、セーブを実現するものです。
+　TOSHIBA PASOPIA7、PASOPIAでCMTの代わりにSD-CARDからロード、セーブを実現するものです。
 
 　SDから読み込めるCMTのファイル形式はEMUで一般的なWAV、CASには対応していません。bugfire2009さんのDumpListEditorを使ってバイナリ形式に変換したものを使います。
 
@@ -27,8 +27,8 @@
 
 　また、事前に調査するのであればPAC SLOT2 15Pin(CRD)の電圧を測ってみてください。
 
-## 回路図
-　PASOPIA7_SD本体基板とPASOPIA7_SD_ROM基板に分かれています。PASOPIA、PASOPIA7とも同一の基板を使います。
+## 回路図(PASOPIA7、PASOPIA共通)
+　PASOPIA7_SD本体基板とPASOPIA7_SD_ROM基板に分かれています。
 
 　SDアクセスルーチンを読み込むためにPASOPIA7_SD_ROM基板(読込専用RAMPAC)を使用します。
 
@@ -102,7 +102,7 @@ MicroSD Card Adapterについているピンヘッダを除去してハンダ付
 |S1|3Pin ピンヘッダーとジャンパーピン又は3Pスライドスイッチ|1|秋月電子通商 SS12D01G4など|
 |J2|コネクタ 2Pin|1|ピンヘッダで代用するときはGNDと間違えないよう1Pinで5Vだけにしたほうが良い|
 
-## 取り付け
+## 取り付け(PASOPIA7、PASOPIA共通)
 　PASOPIA7_SD本体基板はPASOPIA7(PASOPIA)本体後部の拡張端子とフラットケーブルで接続します。50Pinフラットケーブルは、コネクタのボッチとケーブルの返しが両方上になる側のコネクタを本体に嵌めます。
 
 　ケーブルの返しを下にして本体に嵌めると一見嵌っているように見えても接触不良を起こしていることがあります。
@@ -119,7 +119,7 @@ MicroSD Card Adapterについているピンヘッダを除去してハンダ付
 
 ![Connect3](https://github.com/yanataka60/PASOPIA7_SD/blob/main/JPEG/PAC%20SLOT%201.JPG)
 
-## ROMへの書込み
+## ROMへの書込み(PASOPIA7、PASOPIA共通)
 　Z80フォルダ内のRAMPAC.binをROMライター(TL866II Plus等)を使って27256又は27512に書き込みます。
 
 　実際に使用しているのは32KByte分(32Kx8)です。
@@ -138,7 +138,7 @@ MicroSD Card Adapterについているピンヘッダを除去してハンダ付
 
 　また、RAMPAC.binへのファイル登録はTAKEDAさんのEMU ePASOPIA7で行っており、RAMPAC1としてファイルを選択すればePASOPIA7から読み書き出来ます。
 
-## XPAC2又はRAMPACの使用
+## XPAC2又はRAMPACの使用(PASOPIA7、PASOPIA共通)
 　XPAC2又はRAMPACを持っていればPASOPIA7_SD_ROM基板の代わりに使用できます。
 
 　ただし、PASOPIA7_SD本体基板への+5V供給を独自に用意する必要があります。内部から引き出すか、5V電源アダプタを用意するかですが、PACスロット1 44Pinから取るのが簡単だと思います。
@@ -153,8 +153,8 @@ MicroSD Card Adapterについているピンヘッダを除去してハンダ付
 ### RAMPAC
 　RAMPAC.binをRAMPACへ登録する方法がありませんのでsd.wav、SDBOOT.wavをCMTインタフェースから読み込み、RAMPACへ保存してください。
 
-## Arduinoプログラム
-　Arduino IDEを使ってArduinoフォルダのPASOPIA7_SDフォルダ内PASOPIA7_SD.inoを書き込みます。PASOPIA7、PASOPIA共通です。
+## Arduinoプログラム(PASOPIA7、PASOPIA共通)
+　Arduino IDEを使ってArduinoフォルダのPASOPIA7_SDフォルダ内PASOPIA7_SD.inoを書き込みます。
 
 　SdFatライブラリを使用しているのでArduino IDEメニューのライブラリの管理からライブラリマネージャを立ち上げて「SdFat」をインストールしてください。
 
@@ -163,7 +163,7 @@ MicroSD Card Adapterについているピンヘッダを除去してハンダ付
 注)Arduinoを基板に直付けしている場合、Arduinoプログラムを書き込むときは、PASOPIA7(PASOPIA)本体とは接続を外し、U1 74LS04を外したうえで書き込んでください。
 
 
-## SD-CARD
+## SD-CARD(PASOPIA7、PASOPIA共通)
 　出来れば8GB以下のSDカードを用意してください。
 
 　ArduinoのSdFatライブラリは、SD規格(最大2GB)、SDHC規格(2GB～32GB)に対応していますが、SDXC規格(32GB～2TB)には対応していません。
@@ -217,17 +217,17 @@ bugfire2009さんのDumpListEditorを使ってバイナリ形式に変換した�
 
 　BASICプログラムか、機械語プログラムかは自動で判断します。
 
+
+||アドレス|動作|
+|---- | ------------ | ------------ |
+|1|～E8FCh|機械語プログラムをLOAD後は、SM,SBコマンドが使用できなくなります。LM,LG,LB,SD,J,Q,Bコマンドは使用できます。|
+|2|～EC54h|機械語プログラムをLOAD後は、J,Q,Bのみ使えます。SD,LMコマンドでLOADした後、Jコマンドでの実行は可能です。|
+|3|～EDC6h|BASICプログラムLOADの限界です。通常はCLEAR文で設定したメインメモリの上限E800hですが、F000hに変更すればEDC6hまでのBASICプログラムを一度だけLOAD出来ます。|
+|4|～EE61h|BASIC中からはこれ以降への機械語LOADは出来ません。|
+|5|～EEE7h|機械語プログラムをLOAD後は、すべてのコマンドが使えません。EDC7h以降までLOADされた場合は強制的に実行番地にジャンプを試みます。|
+
 　なお、E7FFh以降へ機械語プログラムがLOADされた場合、次の五段階の挙動となります。
 
-　1)～E8FCh:機械語プログラムをLOAD後は、SM,SBコマンドが使用できなくなります。LM,LG,LB,SD,J,Q,Bコマンドは使用できます。
-
-　2)～EC54h:機械語プログラムをLOAD後は、J,Q,Bのみ使えます。SD,LMコマンドでLOADした後、Jコマンドでの実行は可能です。
-
-　3)～EDC6h:BASICプログラムLOADの限界です。通常はCLEAR文で設定したメインメモリの上限E800hですが、F000hに変更すればEDC6hまでのBASICプログラムを一度だけLOAD出来ます。
-
-　4)～EE61h:BASIC中からはこれ以降への機械語LOADは出来ません。
-
-　5)～EEE7h:機械語プログラムをLOAD後は、すべてのコマンドが使えません。EDC7h以降までLOADされた場合は強制的に実行番地にジャンプを試みます。
 
 　表示される順番は、登録順となりファイル名アルファベッド順などのソートした順で表示することはできません。
 
