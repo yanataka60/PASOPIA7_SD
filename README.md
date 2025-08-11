@@ -129,11 +129,11 @@ MicroSD Card Adapterについているピンヘッダを除去してハンダ付
 ## RAMPAC.binに登録されているファイル
 　RAMPAC.binに登録されているファイルは次の2つになります。
 
-|ファイル名|種類|備考｜
+|ファイル名|種類|備考|
 | ------------ | ------------ | ------------ |
-|sd|BASIC|PASOPIA7用｜
+|sd|BASIC|PASOPIA7用|
 |SDBOOT|BINARY|PASOPIA7用|
-|sdt|BASIC|PASOPIA用｜
+|sdt|BASIC|PASOPIA用|
 |SDTBOOT|BINARY|PASOPIA用|
 
 　また、RAMPAC.binへのファイル登録はTAKEDAさんのEMU ePASOPIA7で行っており、RAMPAC1としてファイルを選択すればePASOPIA7から読み書き出来ます。
