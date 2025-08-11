@@ -148,10 +148,10 @@ MicroSD Card Adapterについているピンヘッダを除去してハンダ付
 
 　XPAC2のSD-CARDへRAMPAC.binをコピーしてXPAC2 SLOT4へ登録することも可能とは思われますが、容量が32KByteとなってしまう気がします。
 
-　XPAC2 SLOT4を64KByteのまま使いたいのであればsd.wav、SDBOOT.wavをCMTインタフェースから読み込み、XPAC2 SLOT4へ保存してください。
+　XPAC2 SLOT4を64KByteのまま使いたいのであればsd.wav(sdt.wav)、SDBOOT.wav(SDTBOOT.wav)をCMTインタフェースから読み込み、XPAC2 SLOT4へ保存してください。
 
 ### RAMPAC
-　RAMPAC.binをRAMPACへ登録する方法がありませんのでsd.wav、SDBOOT.wavをCMTインタフェースから読み込み、RAMPACへ保存してください。
+　RAMPAC.binをRAMPACへ登録する方法がありませんのでsd.wav(sdt.wav)、SDBOOT.wav(SDTBOOT.wav)をCMTインタフェースから読み込み、RAMPACへ保存してください。
 
 ## Arduinoプログラム(PASOPIA7、PASOPIA共通)
 　Arduino IDEを使ってArduinoフォルダのPASOPIA7_SDフォルダ内PASOPIA7_SD.inoを書き込みます。
