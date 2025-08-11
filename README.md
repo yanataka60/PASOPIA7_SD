@@ -1,8 +1,8 @@
-# TOSHIBA PASOPIA7にSD-Cardとのロード、セーブ機能
+# TOSHIBA PASOPIA、PASOPIA7にSD-Cardとのロード、セーブ機能
 
 ![PASOPIA7_SD](https://github.com/yanataka60/PASOPIA7_SD/blob/main/JPEG/TITLE.jpg)
 
-　TOSHIBA PASOPIA7でCMTの代わりにSD-CARDからロード、セーブを実現するものです。
+　TOSHIBA PASOPIA、PASOPIA7でCMTの代わりにSD-CARDからロード、セーブを実現するものです。
 
 　SDから読み込めるCMTのファイル形式はEMUで一般的なWAV、CASには対応していません。bugfire2009さんのDumpListEditorを使ってバイナリ形式に変換したものを使います。
 
@@ -17,18 +17,18 @@
 　なお、Arduino、ROMへ書き込むための機器が別途必要となります。
 
 ## 重要!!
-　PASOPIA7あるある電源ユニット部フィルムコンデンサの破裂による修理で適切な品に交換されていない場合、電源電圧は正常(+5V)なのに信号電圧が異常(+10V程度)な状態となることがあるようです。
+　PASOPIA、PASOPIA7においてあるあるの電源ユニット部フィルムコンデンサの破裂ですが、修理に適切な品への交換されていない場合、電源電圧は正常(+5V)なのに信号電圧が異常(+10V程度)な状態となることがあるようです。
 
-　私は当初原因が判らずArduino及びUSBシリアル変換モジュールを数個破壊してしまいました。
+　私は当初電源電圧が正常であることを確認したものの原因が判らずArduino及びUSBシリアル変換モジュールを数個破壊してしまいました。
 
-　当方ではCZRD信号の電圧が異常だったため、念のためPASOPIA7_SD基板に「J6 TEST_VOL」端子を設けてあります。
+　当方ではCZRD信号の電圧が異常だったため、念のためPASOPIA7_SD基板にCZRD信号電圧を測るための「J6 TEST_VOL」端子を設けてあります。
 
 　ICを装着する前に電圧をチェックし、+5V以上の電圧が出ているようであればまず電源ユニット部フィルムコンデンサを適切な品に交換してください。
 
 　また、事前に調査するのであればPAC SLOT2 15Pin(CRD)の電圧を測ってみてください。
 
 ## 回路図
-　PASOPIA7_SD本体基板とPASOPIA7_SD_ROM基板に分かれています。
+　PASOPIA7_SD本体基板とPASOPIA7_SD_ROM基板に分かれています。PASOPIA、PASOPIA7とも同一の基板を使います。
 
 　SDアクセスルーチンを読み込むためにPASOPIA7_SD_ROM基板(読込専用RAMPAC)を使用します。
 
@@ -103,15 +103,15 @@ MicroSD Card Adapterについているピンヘッダを除去してハンダ付
 |J2|コネクタ 2Pin|1|ピンヘッダで代用するときはGNDと間違えないよう1Pinで5Vだけにしたほうが良い|
 
 ## 取り付け
-　PASOPIA7_SD本体基板はPASOPIA7本体後部の拡張端子とフラットケーブルで接続します。50Pinフラットケーブルは、コネクタのボッチとケーブルの返しが両方上になる側のコネクタを本体に嵌めます。
+　PASOPIA7_SD本体基板はPASOPIA7(PASOPIA)本体後部の拡張端子とフラットケーブルで接続します。50Pinフラットケーブルは、コネクタのボッチとケーブルの返しが両方上になる側のコネクタを本体に嵌めます。
 
 　ケーブルの返しを下にして本体に嵌めると一見嵌っているように見えても接触不良を起こしていることがあります。
 
 ![Connect1](https://github.com/yanataka60/PASOPIA7_SD/blob/main/JPEG/CONNECT(1).JPG)
 
-　PASOPIA7_SD_ROM基板はPACスロット2に挿入します。この時PASOPIA7_SD_ROM基板は部品実装面を手前にして挿入してください。
+　PASOPIA7_SD_ROM基板はPACスロット2に挿入します。この時PASOPIA7_SD_ROM基板は部品実装面を手前にして挿入してください。基板の右端をスロットの右に合わせるように挿入すればズレずに挿入できると思います。
 
-　また、PASOPIA7_SD_ROM基板への+5V供給のため、PASOPIA7_SD_ROM基板の+5V端子(J2)とPASOPIA7_SD本体基板の+5V端子(J4)を繋いでください。
+　次にPASOPIA7_SD_ROM基板への+5V供給のため、PASOPIA7_SD_ROM基板の+5V端子(J2)とPASOPIA7_SD本体基板の+5V端子(J4)を繋いでください。
 
 ![Connect2](https://github.com/yanataka60/PASOPIA7_SD/blob/main/JPEG/CONNECT(2).JPG)
 
@@ -124,15 +124,17 @@ MicroSD Card Adapterについているピンヘッダを除去してハンダ付
 
 　実際に使用しているのは32KByte分(32Kx8)です。
 
-　PASOPIA7_SD_ROM基板のROMはPASOPIA7からはRAMPACとして扱われます。(PASOPIA7から書き込みはできません。)
+　PASOPIA7_SD_ROM基板のROMはPASOPIA7(PASOPIA)からはRAMPACとして扱われます。(PASOPIA7(PASOPIA)から書き込みはできません。)
 
 ## RAMPAC.binに登録されているファイル
 　RAMPAC.binに登録されているファイルは次の2つになります。
 
-|ファイル名|種類|
-| ------------ | ------------ |
-|sd|BASIC|
-|SDBOOT|BINARY|
+|ファイル名|種類|備考｜
+| ------------ | ------------ | ------------ |
+|sd|BASIC|PASOPIA7用｜
+|SDBOOT|BINARY|PASOPIA7用|
+|sdt|BASIC|PASOPIA用｜
+|SDTBOOT|BINARY|PASOPIA用|
 
 　また、RAMPAC.binへのファイル登録はTAKEDAさんのEMU ePASOPIA7で行っており、RAMPAC1としてファイルを選択すればePASOPIA7から読み書き出来ます。
 
@@ -142,23 +144,23 @@ MicroSD Card Adapterについているピンヘッダを除去してハンダ付
 　ただし、PASOPIA7_SD本体基板への+5V供給を独自に用意する必要があります。内部から引き出すか、5V電源アダプタを用意するかですが、PACスロット1 44Pinから取るのが簡単だと思います。
 
 ### XPAC2
-　ePASOPIA7で扱うRAMPACKが32KByteなのに対してXPAC2で扱うRAMPACは64KByteです。
+　ePASOPIA7で扱うRAMPACKが32KByteなのに対してXPAC2で扱うSLOT4は64KByteです。
 
-　XPAC2のSD-CARDを利用してRAMPAC.binをXPAC2へ登録することも可能とは思われますが、XPAC2でのRAMPACの容量が32KByteとなってしまうと思います。
+　XPAC2のSD-CARDへRAMPAC.binをコピーしてXPAC2 SLOT4へ登録することも可能とは思われますが、容量が32KByteとなってしまう気がします。
 
-　XPAC2を64KByteのまま使いたいのであればsd.wav、SDBOOT.wavをCMTインタフェースから読み込み、XPAC2へ保存してください。
+　XPAC2 SLOT4を64KByteのまま使いたいのであればsd.wav、SDBOOT.wavをCMTインタフェースから読み込み、XPAC2 SLOT4へ保存してください。
 
 ### RAMPAC
-　RAMPAC.binをRAMAPCへ登録する方法がありませんのでsd.wav、SDBOOT.wavをCMTインタフェースから読み込み、RAMPAC2へ保存してください。
+　RAMPAC.binをRAMPACへ登録する方法がありませんのでsd.wav、SDBOOT.wavをCMTインタフェースから読み込み、RAMPACへ保存してください。
 
 ## Arduinoプログラム
-　Arduino IDEを使ってArduinoフォルダのPASOPIA7_SDフォルダ内PASOPIA7_SD.inoを書き込みます。
+　Arduino IDEを使ってArduinoフォルダのPASOPIA7_SDフォルダ内PASOPIA7_SD.inoを書き込みます。PASOPIA7、PASOPIA共通です。
 
 　SdFatライブラリを使用しているのでArduino IDEメニューのライブラリの管理からライブラリマネージャを立ち上げて「SdFat」をインストールしてください。
 
 　「SdFat」で検索すれば見つかります。「SdFat」と「SdFat - Adafruit Fork」が見つかりますが「SdFat」のほうを使っています。
 
-注)Arduinoを基板に直付けしている場合、Arduinoプログラムを書き込むときは、PASOPIA7本体とは接続を外し、U1 74LS04を外したうえで書き込んでください。
+注)Arduinoを基板に直付けしている場合、Arduinoプログラムを書き込むときは、PASOPIA7(PASOPIA)本体とは接続を外し、U1 74LS04を外したうえで書き込んでください。
 
 
 ## SD-CARD
@@ -171,13 +173,21 @@ MicroSD Card Adapterについているピンヘッダを除去してハンダ付
 　FAT16又はFAT32が認識できます。NTFSは認識できません。
 
 ## 操作方法
+### PASOPIA7
 　起動直後に「RUN"sd"」を実行してSDアクセスルーチンの読込、初期化の実行を行います。
 
-　SDアクセスルーチンはE800h～EFF0hに読み込まれます。
+　SDアクセスルーチンはE800h～EFCFhに読み込まれます。
 
 　SDアクセスメニューを表示するにはA=&HE800:CALL Aを実行しますが、PF6ファンクションキーに登録してありますのでPF6ファンクションキーを押しても大丈夫です。
 
-#### 扱えるファイル
+### PASOPIA
+　起動直後に「RUN"sdt"」を実行してSDアクセスルーチンの読込、初期化の実行を行います。
+
+　SDアクセスルーチンはF000h～F776hに読み込まれます。
+
+　SDアクセスメニューを表示するにはA=&HF000:CALL Aを実行しますが、PF6ファンクションキーに登録してありますのでPF6ファンクションキーを押しても大丈夫です。
+
+#### 扱えるファイル(PASOPIA7、PASOPIA共通)
 bugfire2009さんのDumpListEditorを使ってバイナリ形式に変換したものを使います。
 
 扱う機種をPASOPIA7に変更したうえで変換します。
@@ -192,7 +202,7 @@ bugfire2009さんのDumpListEditorを使ってバイナリ形式に変換した�
 
 ![DumpListEditor2](https://github.com/yanataka60/PASOPIA7_SD/blob/main/JPEG/DumpListEditor1.jpg)
 
-### コマンド
+### コマンド(PASOPIA7、PASOPIA共通)
 　コマンド入力時にBSキー又は左カーソルキーで直前に入力した文字を訂正できます。
 
 　CLR、HOME、上・下・右カーソルキーは画面が乱れるだけで入力文字の訂正は出来ません。
@@ -232,7 +242,6 @@ bugfire2009さんのDumpListEditorを使ってバイナリ形式に変換した�
 　指定したDOSフィル名の機械語プログラムをSD-CARDからLOADします。
 
 　拡張子が「bin」であるファイルだけが対象でファイル名の最後が「.BIN」でない場合には自動的に付加されます。
-　読み込める機械語プログラムの範囲は通常F7FFhまでとなります。F000h～FFFFhへ機械語プログラムをLOADしたいときは「SDE8」を使用してください。
 
 　なお、E7FFh以降へ機械語プログラムがLOADされた場合、次の五段階の挙動となります。
 
@@ -265,7 +274,7 @@ bugfire2009さんのDumpListEditorを使ってバイナリ形式に変換した�
 
 　LOADするPROGエリアを切り替えたい場合にはSDメニューに入る前に切り替えておいてください。
 
-　拡張子が「bas」であるファイルだけが対象でファイル名の最後が「.BAS」でない場合には自動的に付加されます。
+　拡張子が「BAS」であるファイルだけが対象でファイル名の最後が「.BAS」でない場合には自動的に付加されます。
 
 ##### 例)
 　　LB TEST[RETURN] -> DOSファイル名「TEST.BAS」を読み込みます。
@@ -274,24 +283,24 @@ bugfire2009さんのDumpListEditorを使ってバイナリ形式に変換した�
 
 　　LB TEST.BIN[RETURN] -> DOSファイル名「TEST.BIN.BAS」を読み込みます。
 
-#### SM XXXX,YYYY,ZZZZ,DOSファイル名[RETURN]　(XXXX,YYYY,ZZZZは16進数4桁を表す文字列)
-　XXXX番地からYYYY番地までの機械語プログラムを実行番地ZZZZとして指定したDOSフィル名でSD-CARDにSAVEします。
+#### SM XXXX,YYYY,DOSファイル名[RETURN]　(XXXX,YYYYは16進数4桁を表す文字列)
+　XXXX番地からYYYY番地までの機械語プログラムを指定したDOSフィル名でSD-CARDにSAVEします。
 
-　拡張子の指定「.bin」は省略することが出来、ファイル名の最後が「.BIN」でない場合には自動的に付加されます。
+　拡張子の指定「.BIN」は省略することが出来、ファイル名の最後が「.BIN」でない場合には自動的に付加されます。
 
 ##### 例)
-　　SM B000,BFFF,B000,TEST[RETURN] -> B000h～BFFFhまでを実行番地B000hとしてDOSファイル名「TEST.BIN」でSAVEします。
+　　SM B000,BFFF,TEST[RETURN] -> B000h～BFFFhまでをDOSファイル名「TEST.BIN」でSAVEします。
 
-　　SM B000,BFFF,B000,TEST.BIN[RETURN] -> B000h～BFFFhまでを実行番地B000hとしてDOSファイル名「TEST.BIN」でSAVEします。
+　　SM B000,BFFF,TEST.BIN[RETURN] -> B000h～BFFFhまでをDOSファイル名「TEST.BIN」でSAVEします。
 
-　　SM B000,BFFF,B000,TEST.BAS[RETURN] -> B000h～BFFFhまでを実行番地B000hとしてDOSファイル名「TEST.BAS.BIN」でSAVEします。
+　　SM B000,BFFF,TEST.BAS[RETURN] -> B000h～BFFFhまでをDOSファイル名「TEST.BAS.BIN」でSAVEします。
 
 #### SB DOSファイル名[RETURN]
 　現在選択しているPROGエリアのBASICプログラムを指定したDOSフィル名でSD-CARDにSAVEします。
 
 　SAVEするPROGエリアを切り替えたい場合にはSDメニューに入る前に切り替えておいてください。
 
-　拡張子の指定「.bas」は省略することが出来、ファイル名の最後が「.BAS」でない場合には自動的に付加されます。
+　拡張子の指定「.BAS」は省略することが出来、ファイル名の最後が「.BAS」でない場合には自動的に付加されます。
 
 ##### 例)
 　　SB TEST[RETURN] -> DOSファイル名「TEST.BAS」でSAVEします。
@@ -311,11 +320,23 @@ bugfire2009さんのDumpListEditorを使ってバイナリ形式に変換した�
 　BASICに復帰します。
 
 ### BASICプログラム中から機械語プログラムをLOADする
+#### PASOPIA7
 　BASICプログラム中に「CALL &HE803:REM ファイル名」と記述することで機械語プログラムをLOAD出来ます。
 
 　ファイル名はSDカードに保存されているファイル名です。拡張子はつけてもつけなくても構いません。
 
-　通常LOAD可能なのはCLEAR文で設定したメインメモリの上限E800hですが、F000hに変更すればEE63hまでのBASICプログラムをLOAD出来ます。
+　通常LOAD可能なのはCLEAR文で設定したメインメモリの上限E7FFhですが、F000hに変更すればEE61hまでのBASICプログラムをLOAD出来ます。
+
+##### 例)
+
+20 B=&HE803:CALL B:REM antiair.bin
+
+#### PASOPIA
+　BASICプログラム中に「CALL &HF003:REM ファイル名」と記述することで機械語プログラムをLOAD出来ます。
+
+　ファイル名はSDカードに保存されているファイル名です。拡張子はつけてもつけなくても構いません。
+
+　通常LOAD可能なのはCLEAR文で設定したメインメモリの上限EFFFhですが、F7FChに変更すればF614hまでのBASICプログラムをLOAD出来ます。
 
 ##### 例)
 
