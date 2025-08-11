@@ -204,13 +204,10 @@ SDIR:							;SD-CARD FILES一覧
 SDIR1:
 		CALL	DIRLIST			;DIRLIST本体をコール
 		JR		Z,SDIR2			;00ならHLにセットされているファイル名でLM又はLBコマンドを実行
-		PUSH	AF
-		CALL	RCVBYTE			;拡張子判定読み飛ばし
-		POP		AF
 		CP		01H				;01なら通常リターン
-		CALL	NZ,ERR			;00,01以外ならERROR
+		JP		NZ,ERR			;00,01以外ならERROR
+		CALL	RCVBYTE			;拡張子判定読み飛ばし
 		JP		ST2
-
 
 SDIR2:
 		DEC		DE
@@ -450,7 +447,7 @@ SC2:	LD		A,C
 		POP		DE
 		RET
 
-;******************* ここから以降を上書きしなければLOAD後にJコマンドで実行可能(EC56)
+;******************* ここから以降を上書きしなければLOAD後にJコマンドで実行可能(EC54)
 ;******* コマンド入力 *******************:
 START:	BCALL	05				;CURSOR ON
 ST1:	LD		HL,TITLE		;タイトル表示
@@ -627,7 +624,7 @@ BC02:	SLA		A				;左へ4回シフト
 		POP		AF
 		RET
 
-;******************* ここから以降を上書きしなければBASICプログラムのLOADは可能(EDC8)
+;******************* ここから以降を上書きしなければBASICプログラムのLOADは可能(EDC6)
 ;***************** LBコマンド(BASICプログラムのLOAD) **************************
 BLOAD:
 		INC		DE
@@ -711,7 +708,7 @@ LINEPR:	PUSH	HL
 		POP		HL
 		RET
 
-;******************* ここから以降を上書きしなければBASIC中からの機械語ロード可能(EE63)
+;******************* ここから以降を上書きしなければBASIC中からの機械語ロード可能(EE61)
 ;************* BASIC中からの機械語ロード *****************
 ;                     CALL &HE003:REM filenameと記述する
 BCAL:
@@ -796,7 +793,7 @@ ML4:
 		BCALL	47				;1文字出力		B<-ASCII
 
 		LD		B,'.'
-;******************* ここから以降を上書きしなければLGコマンドでロード実行可能(EEE9)
+;******************* ここから以降を上書きしなければLGコマンドでロード実行可能(EEE7)
 DBRLOP:	CALL	RCVBYTE			;データ受信
 		LD		(HL),A
 		DEC		DE

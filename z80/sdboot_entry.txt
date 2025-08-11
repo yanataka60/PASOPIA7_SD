@@ -2,5 +2,5 @@
 20 PRINT "set cmt 'SDBOOT.bin(SDBOOT.wav)'"
 30 BLOAD #-1,"SDBOOT"
 40 PRINT "Save to rampac"
-50 BSAVE"SDBOOT",&HE800,&H7D2
+50 BSAVE"SDBOOT",&HE800,&H7D0
 60 PRINT "End of Save"
