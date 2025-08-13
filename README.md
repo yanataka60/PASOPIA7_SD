@@ -2,7 +2,7 @@
 
 ![PASOPIA7_SD](https://github.com/yanataka60/PASOPIA7_SD/blob/main/JPEG/TITLE.jpg)
 
-　TOSHIBA PASOPIA7、PASOPIAでCMTの代わりにSD-CARDからロード、セーブを実現するものです。
+　TOSHIBA PASOPIA7、PASOPIA(Ver1.1)でCMTの代わりにSD-CARDからロード、セーブを実現するものです。
 
 　SDから読み込めるCMTのファイル形式はEMUで一般的なWAV、CASには対応していません。bugfire2009さんのDumpListEditorを使ってバイナリ形式に変換したものを使います。
 
@@ -15,6 +15,8 @@
 　ただし、CMT用プログラムのすべてがSD対応となるわけではありません。特に市販ゲームはCMT読み込みに独自ルーチンを使っているものもあるため、SD対応は不明です。
 
 　なお、Arduino、ROMへ書き込むための機器が別途必要となります。
+
+　PASOPIAはVer1.0を所有していないため、Ver1.1のみの対応です。
 
 ## 重要!!
 　PASOPIA、PASOPIA7においてあるあるの電源ユニット部フィルムコンデンサの破裂ですが、修理に適切な品への交換されていない場合、電源電圧は正常(+5V)なのに信号電圧が異常(+10V程度)な状態となることがあるようです。
@@ -180,7 +182,7 @@ MicroSD Card Adapterについているピンヘッダを除去してハンダ付
 
 　SDアクセスメニューを表示するにはA=&HE800:CALL Aを実行しますが、PF6ファンクションキーに登録してありますのでPF6ファンクションキーを押しても大丈夫です。
 
-### PASOPIA
+### PASOPIA(Ver1.1のみ対応)
 　起動直後に「RUN"sdt"」を実行してSDアクセスルーチンの読込、初期化の実行を行います。
 
 　SDアクセスルーチンはF000h～F776hに読み込まれます。
@@ -369,3 +371,6 @@ bugfire2009さんのDumpListEditorを使ってバイナリ形式に変換した�
 　AE-microSD-LLCNV
 
 　　https://github.com/kuninet/PC-8001-SD-8kRAM
+
+## 追記
+2025.8.14 PASOPIAはVer1.1のみ対応していることを追記。
