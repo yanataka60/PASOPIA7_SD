@@ -373,6 +373,6 @@ bugfire2009さんのDumpListEditorを使ってバイナリ形式に変換した�
 　　https://github.com/kuninet/PC-8001-SD-8kRAM
 
 ## 追記
-2025.8.14 PASOPIAはT-BASIC Ver1.1のみ対応していることを追記。
+2025.8.13 PASOPIAはT-BASIC Ver1.1のみ対応していることを追記。
 
-2025.8.15 BASICプログラム中から機械語プログラムをLOADするときのファイル名には拡張子も含めることを追記。
+2025.8.14 BASICプログラム中から機械語プログラムをLOADするときのファイル名には拡張子も含めることを追記。
